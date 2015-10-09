@@ -34,6 +34,9 @@ html {
           margin-left: 5px;
           margin-top: 3px;
           float: right; }
+          html header #user-status .userinfo .username .user-settings {
+            float: right;
+            margin-right: 30px; }
   html main {
     margin-top: 45px; }
   html .contact {

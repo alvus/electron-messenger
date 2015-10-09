@@ -6,8 +6,10 @@
     <meta charset="utf-8" />
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link type="font/opentype" href="fonts/OpenSans-Regular.ttf">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
     <script src="js/jquery.nicescroll.min.js"></script>
+
 </head>
 
 <body>
@@ -19,29 +21,32 @@
         		</div>
         		<div class="username">
         			<b>John Doe</b>
+	        		<div class="user-settings">
+	        			<i class="fa fa-cog"></i>	
+	        		</div>
         		</div>
         	</div>
         </div>
     </header>
    
     <main>
-        <div class="contact">
+        <div class="contact" onclick="alert('Here you`ll be able to contact this user')">
             <div class="avatar">
                 <img src="img/min_pic.jpg" height="25" width="25">
             </div>
-            <div class="name" onclick="alert('Here you`ll be able to contact this user')">
-                Афанасий Забулдыгин
+            <div class="name">
+                <b>Назар Сивуха</b>
             </div>
         </div>
 
-        <div class="contact">
+        <div class="contact" onclick="alert('Here you`ll be able to contact this user')">
             <div class="avatar">
                 <img src="img/min_pic.jpg" height="25" width="25">
             </div>
             <div class="name" onclick="alert('Here you`ll be able to contact this user')">
-                Афанасий Забулдыгин
+                <b>Харитон Уйобищенко</b>
             	<div class="incoming">
-            		M
+            		<i class="fa fa-envelope"></i>
             	</div>
             </div>
             
