@@ -1,0 +1,9 @@
+{
+	"name": "diary",
+	"version": "0.1.0",
+	"main": "./main.js",
+	"scripts": {
+		"start": "electron .",
+		"build": "electron-packager . myApp --all --version=0.33.3 --app-version=0.1.0 --out=dist --ignore=dist --prune"
+	}
+}

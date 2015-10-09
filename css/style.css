@@ -1,0 +1,39 @@
+html {
+  width: 280px;
+  height: 600px;
+  background-color: #28282D;
+  color: #ECF0F1;
+  font-family: 'Open Sans' sans-serif;
+  font-size: 12px; }
+  html header {
+    margin: 5px; }
+  html .contact {
+    border-style: solid;
+    border-width: 1px;
+    height: 25px;
+    padding: 5px;
+    margin-right: 5px;
+    max-width: 27px;
+    min-width: 270px;
+    margin-bottom: 3px; }
+    html .contact :hover {
+      color: #fef78a;
+      cursor: pointer; }
+    html .contact .avatar {
+      width: 50px;
+      float: left; }
+    html .contact .name {
+      width: 220px;
+      float: right; }
+  html #footer {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    height: 30px;
+    padding-top: 10px;
+    padding-left: 10px;
+    background-color: #28282D;
+    box-shadow: -10px 0px 5px white; }
+
+/*# sourceMappingURL=style.css.map */
