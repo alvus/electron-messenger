@@ -42,7 +42,7 @@ function loadChat(){
 
 			var messageTime = new Date(data.response.items[i].date * 1000);
 
-			var dialog = $('<div>' + direct + ' [' + messageTime.toLocaleString('ru') + '] ' + data.response.items[i].body +  '</div>');
+			var dialog = $('<div>' + direct + ' [' + messageTime.toLocaleString('ru') + '] ' + data.response.items[i].body.replace('<', '&lt;').replace('>', '&gt;') +  '</div>');
 
 			$('main').append(dialog);
 		}
