@@ -1,5 +1,5 @@
 {
-  "name": "Electron messenger",
+  "name": "emessenger",
   "version": "0.1.1a",
   "main": "./main.js",
   "scripts": {

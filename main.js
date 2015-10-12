@@ -23,7 +23,8 @@ function oauth(){
 	var w = null;
 	w = new BrowserWindow({
 		width: 800,
-		height: 600
+		height: 600,
+		frame: false 
 	});
 
 	w.loadUrl('https://oauth.vk.com/authorize?client_id=3735228&display=page&redirect_uri=https://oauth.vk.com/blank.html&scope=friends,messages,offline&response_type=token&v=5.37');
@@ -53,7 +54,8 @@ function loadMainWindow(){
 		mainWindow = new BrowserWindow({
 			width: 310,
 			height: 600,
-			// resizable: false
+			frame: false,
+			resizable: false
 		});
 		
 		mainWindow.loadUrl(path.join('file://', __dirname, '/index.html'));
