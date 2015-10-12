@@ -36,13 +36,19 @@ function loadChat(){
 
 		for (var i = data.response.items.length-1; i >= 0;  i--){
 			var direct = '>>>';
+			var cls = 'sent';
 			if (data.response.items[i].from_id == uid){
 				direct = '<<<';
+				cls = 'incoming';
 			}
 
 			var messageTime = new Date(data.response.items[i].date * 1000);
-
-			var dialog = $('<div>' + direct + ' [' + messageTime.toLocaleString('ru') + '] ' + data.response.items[i].body.replace('<', '&lt;').replace('>', '&gt;') +  '</div>');
+			console.log(data.response.items[i].body.replace('<', '&lt;').replace('>', '&gt;'));
+			var body = data.response.items[i].body.replace(new RegExp('<', 'g'), '&lt;');
+			body = body.replace(new RegExp('>', 'g'), '&gt;');
+			var patt = /(\b(https?|ftp):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gim;
+			body = body.replace(patt, '<a href="$1" target="_blank">$1</a>')
+			var dialog = $('<div class="' + cls + '">' + direct + ' [' + messageTime.toLocaleString('ru') + '] ' + body +  '</div>');
 
 			$('main').append(dialog);
 		}
