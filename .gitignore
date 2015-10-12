@@ -1,4 +1,4 @@
 dist/*
-.sublime-*
+*.sublime-*
 cnf.js
 node_modules/
