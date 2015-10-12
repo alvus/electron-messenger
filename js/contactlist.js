@@ -46,5 +46,5 @@ function loadContactList(){
 }
 
 function loadChat(uid){
-	window.open(path.join('file://', __dirname, 'chat.html') + '?uid=' + uid, '', 'height=400,width=600');
+	window.open(path.join('file://', __dirname, 'chat.html') + '?uid=' + uid, '', 'height=700,width=600');
 }
