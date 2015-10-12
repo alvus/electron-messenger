@@ -3,8 +3,20 @@ var BrowserWindow = require('browser-window');
 var path = require('path');
 var fs = require('fs');
 var cnf = null;
-var fl = fs.readFileSync(path.join(__dirname, 'cnf.js'), {encoding: 'utf-8'});
-cnf = JSON.parse(fl);
+if  (!fs.existsSync(path.join(__dirname, 'cnf.js'))){
+	cnf = {
+		appId:"3735228",
+		token:"",
+		appSecret:"XqdjUGSekYyMYa3UQZWe",
+		online:true
+	};
+
+	fs.writeFileSync(path.join(__dirname, 'cnf.js'), JSON.stringify(cnf));
+}
+else {
+	var fl = fs.readFileSync(path.join(__dirname, 'cnf.js'), {encoding: 'utf-8'});
+	cnf = JSON.parse(fl);
+}
 var mainWindow = null;
 
 function oauth(){
@@ -30,8 +42,9 @@ function oauth(){
 	    if (token){
 	    	cnf.token = token;
 	    	fs.writeFileSync(path.join(__dirname, 'cnf.js'), JSON.stringify(cnf));
-	    	w.close();
+
 	    	loadMainWindow();
+	    	w.close();
 	    }
 	});
 }
@@ -44,6 +57,7 @@ function loadMainWindow(){
 		});
 		
 		mainWindow.loadUrl(path.join('file://', __dirname, '/index.html'));
+		mainWindow.show();
 		mainWindow.on('closed', function(){
 			mainWindow = null;
 		});
@@ -58,6 +72,7 @@ app.on('window-all-closed', function(){
 });
 
 app.on('ready', function(){
+	console.log(JSON.stringify(cnf));
 	if (!cnf.token)
 	{
 		oauth();
