@@ -4,7 +4,13 @@
   "main": "./main.js",
   "scripts": {
     "start": "electron .",
-    "build": "electron-packager . electron-messenger --all --version=0.33.3 --app-version=0.1.0 --out=dist --ignore=dist --prune"
+    "build": "electron-packager . electron-messenger --all --version=0.33.3 --app-version=0.1.1a --out=dist --ignore=dist --prune"
+  },
+  "dependencies": {
+    "electron-packager": "^4.0.2",
+    "electron-prebuilt": "^0.25.2",
+    "electron-builder": "^1.0.0",
+    "vksdk": "^5.1.5"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
