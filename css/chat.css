@@ -27,6 +27,12 @@ main {
   position: auto;
   color: white;
   margin-bottom: 140px; }
+  main .incoming {
+    background-color: #37373C; }
+  main a {
+    color: #849353; }
+    main a :visited {
+      color: FFF; }
 
 footer {
   margin-top: 70px;
