@@ -2,3 +2,4 @@ dist/*
 *.sublime-*
 cnf.js
 node_modules/
+Gruntfile.js
