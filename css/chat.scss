@@ -54,6 +54,7 @@ main{
 footer{
 
 	margin-top:70px;
+	width:100%;
 	min-height: 100px;
 	max-height: 100px;
 	position: fixed;
@@ -68,6 +69,8 @@ footer{
 		float: left;
 		background-color: $main-color;
 		color: #FFF;
+		min-width:80%;
+		max-width:80%;
 	}
 
 	button {
@@ -89,9 +92,11 @@ footer{
 		box-shadow: rgba(0,0,0,1) 0 1px 0;
 		text-shadow: rgba(0,0,0,.4) 0 1px 0;
 		color: white;
-		font-size: 17px;
+		font-size: 1.7em;
 		text-decoration: none;
 		vertical-align: middle;
+		min-width: 12%;
+		max-width: 12%;
 	   }
 	button:hover {
 	   border-top-color: #1067a1;

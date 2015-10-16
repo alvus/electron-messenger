@@ -32,15 +32,19 @@ function loadContactList(){
 	vk.request('friends.get', {fields: 'photo_50,online', order: 'hints'}, function(data){
 		if (!data.response){
 			return;
-		}
-		
-		for (var i = 0; i < data.response.items.length; i++){
-			if (!data.response.items[i].online){
-				continue;
-			}
-			var contactDiv = $('<div class="contact"><div class="avatar"><a href="https://vk.com/id' + data.response.items[i].id + '" target="_blank"><img src="' + data.response.items[i].photo_50 + '" height="25" width="25"></a></div><div class="name" onclick="loadChat(' + data.response.items[i].id + ')" id="contact_' +  data.response.items[i].id+ '"><b>' + data.response.items[i].first_name + ' ' + data.response.items[i].last_name + '</b></div></div>');
-			$('main').append(contactDiv);
+		};
 
+		var userArray = data.response.items;
+		
+		for(var i = 0; i < userArray.length; i++){
+			if (!userArray[i].online){
+				continue;
+			};
+			var divString = '<div class="contact"  onclick="loadChat(' + userArray[i].id + ')" ><div class="avatar"><img src="' + userArray[i].photo_50 + '" height="25" width="25"></div><div class="name" id="contact_' +  userArray[i].id+ '"><b>' + userArray[i].first_name + ' ' + userArray[i].last_name + '</b></div></div>';
+			
+			var contactDiv = $(divString);
+
+			$('main').append(contactDiv);
 		}
 	});
 }
