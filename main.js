@@ -52,7 +52,7 @@ function oauth(){
 
 function loadMainWindow(){
 		mainWindow = new BrowserWindow({
-			width: 310,
+			width: 280,
 			height: 600,
 			frame: false,
 			resizable: false

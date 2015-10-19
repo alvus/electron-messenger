@@ -49,8 +49,9 @@ function loadContactList(){
 			contactsHtml += '<div class="contact"  onclick="loadChat(' + userArray[i].id + ')" ><div class="avatar"><img src="' + userArray[i].photo_50 + '" height="25" width="25"></div><div class="name" id="contact_' +  userArray[i].id+ '"><b>' + userArray[i].first_name + ' ' + userArray[i].last_name + '</b></div></div>';
 			onlineCounter++;
 		}
-			$('.onlineCounter').append(onlineCounter);
-		}
+			$('.onlineCounter').html(onlineCounter);
+			// $('.onlineCounter').append(onlineCounter);
+		
 		var loadingDiv = document.querySelector('#loading-div') || null;
 	
 		if (loadingDiv){
