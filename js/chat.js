@@ -23,8 +23,20 @@ if (uid == null){
 	window.close();
 }
 
+getAccName();
 loadUserInfo();
 loadChat();
+
+var accName = '';
+
+function getAccName(){
+	if (accName){
+		return accName;
+	}
+	vk.request('users.get', {}, function(data){
+		accName = data.response[0].first_name;
+	});
+}
 
 function loadChat(){
 	vk.request('messages.getHistory', {user_id: uid}, function(data){
@@ -33,18 +45,20 @@ function loadChat(){
 		}
 
 		console.log(JSON.stringify(data));
+		var items = data.response.items;
 
-		for (var i = data.response.items.length-1; i >= 0;  i--){
-			var direct = '>>>';
+		for (var i = items.length-1; i >= 0;  i--){
+			// var direct = '>>>';
+			var direct = accName;
 			var cls = 'sent';
-			if (data.response.items[i].from_id == uid){
-				direct = '<<<';
+			if (items[i].from_id == uid){
+				direct = items[i].first_name;
 				cls = 'incoming';
 			}
 
-			var messageTime = new Date(data.response.items[i].date * 1000);
-			console.log(data.response.items[i].body.replace('<', '&lt;').replace('>', '&gt;'));
-			var body = data.response.items[i].body.replace(new RegExp('<', 'g'), '&lt;');
+			var messageTime = new Date(items[i].date * 1000);
+			console.log(items[i].body.replace('<', '&lt;').replace('>', '&gt;'));
+			var body = items[i].body.replace(new RegExp('<', 'g'), '&lt;');
 			body = body.replace(new RegExp('>', 'g'), '&gt;');
 			var patt = /(\b(https?|ftp):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gim;
 			body = body.replace(patt, '<a href="$1" target="_blank">$1</a>')

@@ -12,19 +12,23 @@ var vk = new VK({
 	'language': 'ru'
 });
 
+
 vk.setToken(cnf.token);
 vk.setSecureRequests(true);
 loadAccountInfo();
 loadContactList();
+
+setInterval(loadContactList, 10000);
 
 function loadAccountInfo(){
 	vk.request('users.get', {fields: 'photo_50'}, function(data){
 		if (!data.response){
 			return;
 		}
-		console.log(JSON.stringify(data));
+		// console.log(JSON.stringify(data));
 		$('#acc-name').text(data.response[0].first_name + ' ' + data.response[0].last_name);
 		$('#my-profile-image').attr('src', data.response[0].photo_50);
+
 	});
 }
 
@@ -36,18 +40,24 @@ function loadContactList(){
 
 		var userArray = data.response.items;
 		var onlineCounter = 0;
+		var contactsHtml = '';
+
 		for(var i = 0; i < userArray.length; i++){
 			if (!userArray[i].online){
 				continue;
 			};
-			var divString = '<div class="contact"  onclick="loadChat(' + userArray[i].id + ')" ><div class="avatar"><img src="' + userArray[i].photo_50 + '" height="25" width="25"></div><div class="name" id="contact_' +  userArray[i].id+ '"><b>' + userArray[i].first_name + ' ' + userArray[i].last_name + '</b></div></div>';
-			
-			var contactDiv = $(divString);
-
-			$('main').append(contactDiv);
+			contactsHtml += '<div class="contact"  onclick="loadChat(' + userArray[i].id + ')" ><div class="avatar"><img src="' + userArray[i].photo_50 + '" height="25" width="25"></div><div class="name" id="contact_' +  userArray[i].id+ '"><b>' + userArray[i].first_name + ' ' + userArray[i].last_name + '</b></div></div>';
 			onlineCounter++;
 		}
-		$('.onlineCounter').append(onlineCounter);
+			$('.onlineCounter').append(onlineCounter);
+		}
+		var loadingDiv = document.querySelector('#loading-div') || null;
+	
+		if (loadingDiv){
+			loadingDiv.remove();
+		}
+		document.querySelector('main').innerHTML = '';
+		$('main').append($(contactsHtml));
 	});
 }
 
