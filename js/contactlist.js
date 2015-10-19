@@ -35,7 +35,7 @@ function loadContactList(){
 		};
 
 		var userArray = data.response.items;
-		
+		var onlineCounter = 0;
 		for(var i = 0; i < userArray.length; i++){
 			if (!userArray[i].online){
 				continue;
@@ -45,7 +45,9 @@ function loadContactList(){
 			var contactDiv = $(divString);
 
 			$('main').append(contactDiv);
+			onlineCounter++;
 		}
+		$('.onlineCounter').append(onlineCounter);
 	});
 }
 
